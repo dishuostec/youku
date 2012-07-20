@@ -1,8 +1,13 @@
 <?php
+/* =============================================================
+ * Youku parser v0.1
+ * https://github.com/dishuostec/youku
+ * ============================================================ */
+
 header('Content-Type: text/html; charset=utf-8');
 
 $id = $_GET['u'];
-$type = empty($_GET['u']) ? 'flv' : $_GET['t'];
+$type = empty($_GET['t']) ? 'flv' : $_GET['t'];
 
 if ( strpos($id, 'v.youku.com') !== FALSE ) {
   if (preg_match('%(?<=v_show/id_)[a-zA-Z0-9]+%', $id, $regs)) {
@@ -16,13 +21,13 @@ if ( strpos($id, 'v.youku.com') !== FALSE ) {
   exit('Invalid ID');
 }
 
-$play_list = new PlayList($id);
+$movie = new Youku($id);
 
-$list = $play_list->get_list($type);
+$list = $movie->get_list($type);
 
 echo json_encode($list);
 
-class PlayList
+class Youku 
 {
   public function __construct ($id)
   {
