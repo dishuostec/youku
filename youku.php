@@ -96,7 +96,7 @@ class Youku
 
   private function get_file_id($type)
   {
-    if ($this->file_id) {
+    if ( ! $this->file_id) {
 
       $mixed = $this->get_mixed_seed();
       $ids = explode("*", $this->streamfileids->$type);  
