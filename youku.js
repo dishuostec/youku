@@ -108,6 +108,7 @@ Youku.prototype.create_list = function() {
 
   
   this.response.write(JSON.stringify({
+    title: this.title,
     thumb: this.logo,
     list: list
   }));

@@ -41,7 +41,8 @@ class Youku
     $data = json_decode($data);
     $data = $data->data[0];
 
-    $keys = 'logo,seed,key1,key2,streamfileids,segs';
+    print_r($data);
+    $keys = 'title,logo,seed,key1,key2,streamfileids,segs';
 
     foreach (explode(',', $keys) as $key) {
       $this->$key = $data->$key;
@@ -65,6 +66,7 @@ class Youku
     }
 
     return array(
+      'title' => $this->title,
       'thumb' => $this->logo,
       'list' => $list,
     );
