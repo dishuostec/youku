@@ -41,7 +41,6 @@ class Youku
     $data = json_decode($data);
     $data = $data->data[0];
 
-    print_r($data);
     $keys = 'title,logo,seed,key1,key2,streamfileids,segs';
 
     foreach (explode(',', $keys) as $key) {
