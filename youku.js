@@ -69,7 +69,7 @@ Youku.prototype.get_data = function() {
         data = {};
       }
 
-      'title,seed,key1,key2,streamfileids,segs'.split(',').forEach(function(k) {
+      'title,logo,seed,key1,key2,streamfileids,segs'.split(',').forEach(function(k) {
         this[k] = data[k] || null;
       }.bind(this));
 
@@ -106,7 +106,11 @@ Youku.prototype.create_list = function() {
     }.bind(this));
   }
 
-  this.response.write(JSON.stringify(list));
+  
+  this.response.write(JSON.stringify({
+    thumb: this.logo,
+    list: list
+  }));
   this.response.end();
 };
 

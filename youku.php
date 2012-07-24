@@ -41,7 +41,7 @@ class Youku
     $data = json_decode($data);
     $data = $data->data[0];
 
-    $keys = 'seed,key1,key2,streamfileids,segs';
+    $keys = 'logo,seed,key1,key2,streamfileids,segs';
 
     foreach (explode(',', $keys) as $key) {
       $this->$key = $data->$key;
@@ -64,7 +64,10 @@ class Youku
         $sid, $num, $type, $file_id, $key);
     }
 
-    return $list;
+    return array(
+      'thumb' => $this->logo,
+      'list' => $list,
+    );
   }
 
   private function get_sid()
